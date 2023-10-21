@@ -12,6 +12,10 @@ struct UserView: View {
             Text(state.user?.name ?? "User Name")
                 .redacted(reason: state.user == nil ? .placeholder : [])
                 .font(.title)
+            Button("Reload") {
+                state.reload()
+            }
+            .disabled(state.isReloadButtonDisabled)
         }
         .task {
             await state.load()

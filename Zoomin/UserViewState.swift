@@ -2,6 +2,8 @@ import Combine
 
 @MainActor
 final class UserViewState: ObservableObject {
+    let userStore: UserStore = .shared
+    
     let id: User.ID
     
     @Published private(set) var user: User?
@@ -9,6 +11,10 @@ final class UserViewState: ObservableObject {
     
     init(id: User.ID) {
         self.id = id
+        
+        userStore.$values
+            .map { values in values[id] }
+            .assign(to: &$user)
     }
 
     func load() async {
@@ -16,7 +22,7 @@ final class UserViewState: ObservableObject {
         defer { isReloadButtonDisabled = false}
         
         do {
-            user = try await UserRepository.fetchValue(id: id)
+            try await userStore.loadValue(for: id)
         } catch {
             // Error handling
             print(error)

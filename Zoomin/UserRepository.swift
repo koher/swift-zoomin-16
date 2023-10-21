@@ -8,7 +8,7 @@ enum UserRepository {
         return [User.ID: User](uniqueKeysWithValues: values.map { ($0.id, $0) })
     }()
     
-    static func fetchValue(id: User.ID) async throws -> User? {
+    static func fetchValue(for id: User.ID) async throws -> User? {
         try await Task.sleep(nanoseconds: 2_000_000_000)
         return values[id]
     }

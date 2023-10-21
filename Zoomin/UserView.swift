@@ -1,28 +1,52 @@
 import SwiftUI
 
 struct UserView: View {
-    @StateObject private var state: UserViewState
+    let id: User.ID
+
+    @State var isReloadButtonDisabled: Bool = false
     
-    init(id: User.ID) {
-        self._state = .init(wrappedValue: UserViewState(id: id))
+    @EnvironmentObject var userStore: UserStore
+    
+    var user: User? {
+        userStore.values[id]
     }
     
+    func load() async {
+        isReloadButtonDisabled = true
+        defer { isReloadButtonDisabled = false}
+        
+        do {
+            try await userStore.loadValue(for: id)
+        } catch {
+            // Error handling
+            print(error)
+        }
+    }
+    
+    func reload() {
+        isReloadButtonDisabled = true
+        Task {
+            await load()
+        }
+    }
+
     var body: some View {
         VStack {
-            Text(state.user?.name ?? "User Name")
-                .redacted(reason: state.user == nil ? .placeholder : [])
+            Text(user?.name ?? "User Name")
+                .redacted(reason: user == nil ? .placeholder : [])
                 .font(.title)
             Button("Reload") {
-                state.reload()
+                reload()
             }
-            .disabled(state.isReloadButtonDisabled)
+            .disabled(isReloadButtonDisabled)
         }
         .task {
-            await state.load()
+            await load()
         }
     }
 }
 
 #Preview {
     UserView(id: "A")
+        .environmentObject(UserStore.shared)
 }

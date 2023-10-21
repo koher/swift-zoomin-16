@@ -12,4 +12,9 @@ enum UserRepository {
         try await Task.sleep(nanoseconds: 2_000_000_000)
         return values[id]
     }
+    
+    static func fetchAllValues() async throws -> [User] {
+        try await Task.sleep(nanoseconds: 2_000_000_000)
+        return values.values.sorted(by: { $0.id.rawValue < $1.id.rawValue })
+    }
 }

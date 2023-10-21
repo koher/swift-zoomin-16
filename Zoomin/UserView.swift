@@ -1,23 +1,20 @@
 import SwiftUI
 
 struct UserView: View {
-    let id: User.ID
+    @StateObject private var state: UserViewState
     
-    @State private var user: User?
+    init(id: User.ID) {
+        self._state = .init(wrappedValue: UserViewState(id: id))
+    }
     
     var body: some View {
         VStack {
-            Text(user?.name ?? "User Name")
-                .redacted(reason: user == nil ? .placeholder : [])
+            Text(state.user?.name ?? "User Name")
+                .redacted(reason: state.user == nil ? .placeholder : [])
                 .font(.title)
         }
         .task {
-            do {
-                user = try await UserRepository.fetchValue(id: id)
-            } catch {
-                // Error handling
-                print(error)
-            }
+            await state.load()
         }
     }
 }

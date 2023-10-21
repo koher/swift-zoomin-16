@@ -18,6 +18,7 @@
 		D6FFB7872AE3F77C008F992F /* SwiftID in Frameworks */ = {isa = PBXBuildFile; productRef = D6FFB7862AE3F77C008F992F /* SwiftID */; };
 		D6FFB7892AE3F7DA008F992F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FFB7882AE3F7DA008F992F /* UserRepository.swift */; };
 		D6FFB78B2AE3F90C008F992F /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FFB78A2AE3F90C008F992F /* UserView.swift */; };
+		D6FFB78D2AE3FA76008F992F /* UserViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FFB78C2AE3FA76008F992F /* UserViewState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D6FFB7832AE3F72D008F992F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D6FFB7882AE3F7DA008F992F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		D6FFB78A2AE3F90C008F992F /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		D6FFB78C2AE3FA76008F992F /* UserViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				D6FFB7832AE3F72D008F992F /* User.swift */,
 				D6FFB7882AE3F7DA008F992F /* UserRepository.swift */,
 				D6FFB78A2AE3F90C008F992F /* UserView.swift */,
+				D6FFB78C2AE3FA76008F992F /* UserViewState.swift */,
 			);
 			path = Zoomin;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D654CBD32AE3CC9700BC7BFD /* ContentView.swift in Sources */,
+				D6FFB78D2AE3FA76008F992F /* UserViewState.swift in Sources */,
 				D654CBD12AE3CC9700BC7BFD /* ZoominApp.swift in Sources */,
 				D6FFB78B2AE3F90C008F992F /* UserView.swift in Sources */,
 				D6FFB7892AE3F7DA008F992F /* UserRepository.swift in Sources */,

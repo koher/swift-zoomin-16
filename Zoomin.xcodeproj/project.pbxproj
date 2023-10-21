@@ -14,6 +14,10 @@
 		D654CBE22AE3CC9800BC7BFD /* ZoominTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D654CBE12AE3CC9800BC7BFD /* ZoominTests.swift */; };
 		D654CBEC2AE3CC9800BC7BFD /* ZoominUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D654CBEB2AE3CC9800BC7BFD /* ZoominUITests.swift */; };
 		D654CBEE2AE3CC9800BC7BFD /* ZoominUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D654CBED2AE3CC9800BC7BFD /* ZoominUITestsLaunchTests.swift */; };
+		D6FFB7842AE3F72D008F992F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FFB7832AE3F72D008F992F /* User.swift */; };
+		D6FFB7872AE3F77C008F992F /* SwiftID in Frameworks */ = {isa = PBXBuildFile; productRef = D6FFB7862AE3F77C008F992F /* SwiftID */; };
+		D6FFB7892AE3F7DA008F992F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FFB7882AE3F7DA008F992F /* UserRepository.swift */; };
+		D6FFB78B2AE3F90C008F992F /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FFB78A2AE3F90C008F992F /* UserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,9 @@
 		D654CBE72AE3CC9800BC7BFD /* ZoominUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZoominUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D654CBEB2AE3CC9800BC7BFD /* ZoominUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoominUITests.swift; sourceTree = "<group>"; };
 		D654CBED2AE3CC9800BC7BFD /* ZoominUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoominUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D6FFB7832AE3F72D008F992F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D6FFB7882AE3F7DA008F992F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		D6FFB78A2AE3F90C008F992F /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6FFB7872AE3F77C008F992F /* SwiftID in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +106,9 @@
 				D654CBD22AE3CC9700BC7BFD /* ContentView.swift */,
 				D654CBD42AE3CC9800BC7BFD /* Assets.xcassets */,
 				D654CBD62AE3CC9800BC7BFD /* Preview Content */,
+				D6FFB7832AE3F72D008F992F /* User.swift */,
+				D6FFB7882AE3F7DA008F992F /* UserRepository.swift */,
+				D6FFB78A2AE3F90C008F992F /* UserView.swift */,
 			);
 			path = Zoomin;
 			sourceTree = "<group>";
@@ -143,6 +154,9 @@
 			dependencies = (
 			);
 			name = Zoomin;
+			packageProductDependencies = (
+				D6FFB7862AE3F77C008F992F /* SwiftID */,
+			);
 			productName = Zoomin;
 			productReference = D654CBCD2AE3CC9700BC7BFD /* Zoomin.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +229,9 @@
 				Base,
 			);
 			mainGroup = D654CBC42AE3CC9700BC7BFD;
+			packageReferences = (
+				D6FFB7852AE3F77C008F992F /* XCRemoteSwiftPackageReference "swift-id" */,
+			);
 			productRefGroup = D654CBCE2AE3CC9700BC7BFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,6 +276,9 @@
 			files = (
 				D654CBD32AE3CC9700BC7BFD /* ContentView.swift in Sources */,
 				D654CBD12AE3CC9700BC7BFD /* ZoominApp.swift in Sources */,
+				D6FFB78B2AE3F90C008F992F /* UserView.swift in Sources */,
+				D6FFB7892AE3F7DA008F992F /* UserRepository.swift in Sources */,
+				D6FFB7842AE3F72D008F992F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +602,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D6FFB7852AE3F77C008F992F /* XCRemoteSwiftPackageReference "swift-id" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/koher/swift-id.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D6FFB7862AE3F77C008F992F /* SwiftID */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D6FFB7852AE3F77C008F992F /* XCRemoteSwiftPackageReference "swift-id" */;
+			productName = SwiftID;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D654CBC52AE3CC9700BC7BFD /* Project object */;
 }

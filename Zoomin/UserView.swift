@@ -48,5 +48,24 @@ struct UserView: View {
 
 #Preview {
     UserView(id: "A")
-        .environment(UserStore.shared)
+        .environment(UserStore(userRepository: PreviewUserRepository(values: [
+            "A": User(id: "A", name: "Name A")
+        ])))
+}
+
+#Preview {
+    UserView(id: "A")
+        .environment(UserStore(userRepository: PreviewUserRepository(values: [:])))
+}
+
+private struct PreviewUserRepository: UserRepositoryProtocol {
+    let values: [User.ID: User]
+    
+    func fetchValue(for id: User.ID) async throws -> User? {
+        values[id]
+    }
+    
+    func fetchAllValues() async throws -> [User] {
+        values.values.sorted(by: { $0.id.rawValue < $1.id.rawValue })
+    }
 }

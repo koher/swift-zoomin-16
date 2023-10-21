@@ -5,10 +5,14 @@ import Observation
 final class UserStore {
     private(set) var values: [User.ID: User] = [:]
     
-    static let shared: UserStore = .init()
+    private let userRepository: any UserRepositoryProtocol
+    
+    init(userRepository: any UserRepositoryProtocol) {
+        self.userRepository = userRepository
+    }
     
     func loadValue(for id: User.ID) async throws {
-        if let value = try await UserRepository.fetchValue(for: id) {
+        if let value = try await userRepository.fetchValue(for: id) {
             values[value.id] = value
         } else {
             values.removeValue(forKey: id)
@@ -16,7 +20,7 @@ final class UserStore {
     }
     
     func loadAllValues() async throws {
-        let values = try await UserRepository.fetchAllValues()
+        let values = try await userRepository.fetchAllValues()
         self.values = .init(uniqueKeysWithValues: values.map { ($0.id, $0) })
     }
 }

@@ -35,5 +35,5 @@ struct UserListView: View {
     NavigationStack {
         UserListView()
     }
-    .environment(UserStore.shared)
+    .environment(UserStore(userRepository: UserRepository.shared))
 }

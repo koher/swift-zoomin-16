@@ -1,15 +1,12 @@
 import Combine
+import Observation
 
-@MainActor
-final class UserListViewState: ObservableObject {
+@MainActor @Observable
+final class UserListViewState {
     let userStore: UserStore = .shared
     
-    @Published var users: [User] = []
-    
-    init() {
-        userStore.$values
-            .map { values in values.values.sorted(by: { $0.id.rawValue < $1.id.rawValue }) }
-            .assign(to: &$users)
+    var users: [User] {
+        userStore.values.values.sorted(by: { $0.id.rawValue < $1.id.rawValue })
     }
     
     func load() async {

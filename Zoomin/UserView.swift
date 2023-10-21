@@ -5,7 +5,7 @@ struct UserView: View {
 
     @State var isReloadButtonDisabled: Bool = false
     
-    @EnvironmentObject var userStore: UserStore
+    @Environment(UserStore.self) var userStore
     
     var user: User? {
         userStore.values[id]
@@ -48,5 +48,5 @@ struct UserView: View {
 
 #Preview {
     UserView(id: "A")
-        .environmentObject(UserStore.shared)
+        .environment(UserStore.shared)
 }

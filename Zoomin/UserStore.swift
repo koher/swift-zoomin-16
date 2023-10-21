@@ -1,8 +1,9 @@
 import Combine
+import Observation
 
-@MainActor
-final class UserStore: ObservableObject {
-    @Published private(set) var values: [User.ID: User] = [:]
+@Observable
+final class UserStore {
+    private(set) var values: [User.ID: User] = [:]
     
     static let shared: UserStore = .init()
     

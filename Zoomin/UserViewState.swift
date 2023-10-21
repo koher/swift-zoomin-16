@@ -1,20 +1,17 @@
 import Combine
+import Observation
 
-@MainActor
-final class UserViewState: ObservableObject {
+@MainActor @Observable
+final class UserViewState {
     let userStore: UserStore = .shared
     
     let id: User.ID
     
-    @Published private(set) var user: User?
-    @Published private(set) var isReloadButtonDisabled: Bool = false
+    var user: User? { userStore.values[id] }
+    private(set) var isReloadButtonDisabled: Bool = false
     
     init(id: User.ID) {
         self.id = id
-        
-        userStore.$values
-            .map { values in values[id] }
-            .assign(to: &$user)
     }
 
     func load() async {

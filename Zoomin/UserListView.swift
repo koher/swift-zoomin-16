@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct UserListView: View {
-    @EnvironmentObject var userStore: UserStore
+    @Environment(UserStore.self) var userStore
     
     var users: [User] {
         userStore.values.values.sorted(by: { $0.id.rawValue < $1.id.rawValue })
@@ -35,5 +35,5 @@ struct UserListView: View {
     NavigationStack {
         UserListView()
     }
-    .environmentObject(UserStore.shared)
+    .environment(UserStore.shared)
 }
